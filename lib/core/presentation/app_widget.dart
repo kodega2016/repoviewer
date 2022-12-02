@@ -38,6 +38,7 @@ class AppWidget extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primarySwatch: Colors.indigo,
         fontFamily: GoogleFonts.passeroOne().fontFamily,
       ),
       title: "Repo Viewer",
