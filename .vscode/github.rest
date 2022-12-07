@@ -1,4 +1,20 @@
+@baseUrl=https://api.github.com
 
-# get all the starred repositories
-GET https://api.github.com/user/starred?page=1
-Authorization: bearer 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
+@access_token=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
+
+@acceptHeader=application/vnd.github.v3.html+json
+
+### get all the starred repositories
+GET {{baseUrl}}/user/starred
+    ?page=1
+Authorization: bearer {{access_token}}
+Accept: {{acceptHeader}}
+If-None-Match: W/"db0f58895217df7379df45131db2d996f26c92f45aed2cdfe48973296308804a"
+
+### get starred repositories
+
+GET {{baseUrl}}/search/repositories
+    ?q=flutter and firebase
+    &page=1
+Authorization: bearer {{access_token}}
+Accept: {{acceptHeader}}
