@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repoviewer/auth/shared/providers.dart';
 import 'package:repoviewer/core/presentation/routes/app_router.gr.dart';
+import 'package:repoviewer/core/shared/providers.dart';
 
 final initializationProvider = FutureProvider((ref) async {
   final authNotifier = ref.read(authNotifierProvider.notifier);
+  ref.read(sembastProvider).init();
   await authNotifier.checkAndUpdateAuthStatus();
 });
 
