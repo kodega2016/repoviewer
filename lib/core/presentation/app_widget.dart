@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,7 +8,18 @@ import 'package:repoviewer/core/shared/providers.dart';
 
 final initializationProvider = FutureProvider((ref) async {
   final authNotifier = ref.read(authNotifierProvider.notifier);
-  ref.read(sembastProvider).init();
+  await ref.read(sembastProvider).init();
+
+  ref.read(dioProvider)
+    ..options = BaseOptions(
+      headers: {
+        "Accept": "application/vnd.github.v3.html+json",
+      },
+    )
+    ..interceptors.add(
+      ref.watch(oAuth2IntercepterProvider),
+    );
+
   await authNotifier.checkAndUpdateAuthStatus();
 });
 

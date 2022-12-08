@@ -11,6 +11,17 @@ class Fresh<T> with _$Fresh<T> {
     bool? isNextPageAvailable,
   }) = _Fresh<T>;
 
+  factory Fresh.no(
+    T entity, {
+    bool? isNextPageAvailable,
+  }) {
+    return Fresh(
+      entity: entity,
+      isFresh: false,
+      isNextPageAvailable: isNextPageAvailable,
+    );
+  }
+
   factory Fresh.yes(
     T entity, {
     bool? isNextPageAvailable,
